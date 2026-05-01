@@ -1,0 +1,775 @@
+/* ============================================================
+   Case Study — Split-Screen Redesign
+   Inspired by daveholloway.uk/work/paper-land
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+body.cs-page {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Use the right scroll area for scrolling */
+    display: flex;
+    height: 100vh;
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* ---------- Progress Bar ---------- */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0%;
+    background: var(--text-primary);
+    z-index: 10000;
+    transition: width 0.1s linear;
+}
+
+/* ---------- Layout Container ---------- */
+.cs-split-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* ---------- Fixed Sidebar (30-35%) ---------- */
+.cs-sidebar {
+    width: 350px;
+    min-width: 350px;
+    height: 100vh;
+    padding: 4rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-primary);
+}
+
+.cs-sidebar-header {
+    margin-bottom: 4rem;
+}
+
+.cs-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 2rem;
+    letter-spacing: -0.05em;
+}
+
+.cs-project-meta-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.cs-project-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Section Navigation ---------- */
+.cs-section-nav {
+    flex: 1;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.cs-section-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cs-section-nav li {
+    margin-bottom: 1.25rem;
+}
+
+.cs-section-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-tertiary);
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cs-section-link:hover {
+    color: var(--text-primary);
+}
+
+.cs-section-link.active {
+    color: var(--text-primary);
+}
+
+/* Nav Active Triangle Indicator */
+.cs-nav-indicator {
+    position: absolute;
+    left: -1.5rem;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 8px solid var(--text-primary);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    top: 5px; /* Adjust based on li height */
+}
+
+/* ---------- Sidebar Footer & Transitions ---------- */
+.cs-sidebar-footer {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.cs-btn-visit {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cs-btn-visit:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Project Navigation */
+.cs-project-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+}
+
+/* Subtle border nav arrows */
+.cs-nav-arrow {
+    width: 60px;
+    height: 60px;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-nav-arrow:hover {
+    border-color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.cs-nav-arrow.prev {
+    margin-left: -5px;
+}
+
+.cs-nav-arrow.next {
+    margin-right: -5px;
+    margin-left: auto;
+}
+
+/* ---------- Scrollable Content (Right) ---------- */
+.cs-main-scroll {
+    flex: 1;
+    height: 100vh;
+    overflow-y: scroll;
+    padding: 0;
+    background: var(--bg-primary);
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Content Blocks */
+.cs-block {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.cs-block.full-bleed {
+    padding: 0;
+}
+
+.cs-block.padded {
+    padding: 6rem 10% 6rem;
+}
+
+/* Visual Placeholder for slots */
+.cs-visual-slot {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.cs-visual-slot img,
+.cs-visual-slot video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cs-visual-slot video {
+    object-fit: contain; /* Aspect fit for videos */
+    background: #000;    /* Professional backdrop for fit-contain videos */
+}
+
+.cs-block:hover .cs-visual-slot img {
+    transform: scale(1.05);
+}
+
+/* Hero Content - Cleaned up */
+.cs-hero-txt {
+    position: absolute;
+    bottom: 5rem;
+    left: 5rem;
+    z-index: 2;
+    color: white;
+}
+
+/* Metadata Blocks in Overview */
+.cs-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.cs-meta-item {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cs-meta-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--text-tertiary);
+}
+
+.cs-meta-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.cs-meta-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Typography in Scroll Area */
+.cs-text-content {
+    max-width: 800px;
+}
+
+.cs-block-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cs-block-label::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+}
+
+.cs-block-title {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.cs-block-body {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+/* Metrics Grid in Block */
+.cs-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.cs-metric-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.cs-metric-val {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.5rem;
+}
+
+.cs-metric-desc {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Insight Cards - Improved Highlights */
+.cs-insight-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--text-tertiary);
+    padding: 2.5rem;
+    border-radius: 4px 20px 20px 4px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-insight-card:hover {
+    border-left-color: var(--text-primary);
+    background: var(--bg-tertiary);
+    transform: translateX(10px);
+}
+
+.cs-insight-num {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+    display: block;
+}
+
+.cs-insight-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.cs-insight-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Strategy Grid - Moved out of media query and refined */
+/* ---------- Glassmorphic Grid ---------- */
+.cs-glass-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.cs-glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cs-glass-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="light"] .cs-glass-card {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .cs-glass-card:hover {
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.cs-glass-icon {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.cs-glass-card h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.cs-glass-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.cs-stagger-1 { transform: translateY(2rem); }
+.cs-stagger-2 { transform: translateY(4rem); }
+.cs-stagger-1:hover { transform: translateY(calc(2rem - 8px)); }
+.cs-stagger-2:hover { transform: translateY(calc(4rem - 8px)); }
+
+.cs-strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.cs-strategy-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--text-tertiary);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 320px;
+    border-radius: 4px 4px 24px 24px;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-strategy-card:hover {
+    border-top-color: var(--text-primary);
+    background: var(--bg-tertiary);
+    transform: translateY(-8px);
+}
+
+.cs-strategy-pill {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+}
+
+.cs-strategy-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.cs-strategy-body {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Mobile Floating Action Bar */
+.cs-floating-nav {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: auto;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cs-nav-pill {
+    background: rgba(var(--bg-primary-rgb, 10, 10, 10), 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--border);
+    padding: 0.75rem 1.25rem;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cs-floating-nav-btn {
+    width: 44px;
+    height: 44px;
+    background: rgba(var(--bg-primary-rgb, 10, 10, 10), 0.85);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cs-floating-nav-btn:hover {
+    border-color: var(--text-tertiary);
+    transform: translateY(-2px);
+}
+
+.cs-nav-pill:hover {
+    border-color: var(--text-tertiary);
+    transform: translateY(-2px);
+}
+
+.cs-active-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.cs-select-icon {
+    font-size: 0.6rem;
+    transition: transform 0.3s ease;
+}
+
+.cs-floating-nav.active .cs-select-icon {
+    transform: rotate(180deg);
+}
+
+/* Floating Menu List */
+.cs-floating-menu {
+    position: absolute;
+    bottom: calc(100% + 1rem);
+    left: 0;
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cs-floating-nav.active .cs-floating-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cs-floating-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cs-floating-menu a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+}
+
+.cs-floating-menu a:hover,
+.cs-floating-menu a.active {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Visual Section Labels */
+.cs-visual-caption {
+    padding: 1.5rem 2rem;
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border);
+}
+
+/* ---------- Mobile Logo & Theme Toggle Header ---------- */
+.cs-mobile-top-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    padding: 0 2rem;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 100%);
+}
+
+.cs-mobile-logo-sticky {
+    font-weight: 800;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    letter-spacing: -0.05em;
+}
+
+.theme-toggle-cs {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2000;
+    transition: all 0.3s ease;
+}
+
+/* Position adjustments on mobile */
+@media (max-width: 850px) {
+    .theme-toggle-cs {
+        position: fixed;
+        top: 1.25rem;
+        right: 2rem;
+    }
+}
+
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+    .cs-sidebar {
+        width: 300px;
+        min-width: 300px;
+        padding: 3rem 2rem;
+    }
+}
+
+@media (max-width: 850px) {
+    body.cs-page {
+        overflow-y: auto;
+        height: auto;
+    }
+    
+    .cs-sidebar {
+        display: none;
+    }
+    
+    .cs-split-container {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .cs-floating-nav {
+        display: flex;
+    }
+
+    .cs-mobile-top-bar {
+        display: flex;
+    }
+    
+    .cs-main-scroll {
+        padding-top: 0;
+        height: auto;
+        overflow-y: visible;
+    }
+    
+    .cs-strategy-grid,
+    .cs-glass-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cs-stagger-1 { transform: none !important; }
+    .cs-stagger-2 { transform: none !important; }
+
+/* Editorial Overview Intro */
+.cs-intro-block {
+    padding-top: 8rem !important;
+}
+
+/* Refined visuals */
+.cs-visual-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(0.2) contrast(1.1);
+    transition: all 1s ease;
+}
+
+.cs-visual-slot:hover img {
+    filter: grayscale(0) contrast(1);
+    transform: scale(1.03);
+}
+}

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karanjeet Singh | Web & UI/UX Designer</title>
+    <meta name="description"
+        content="Toronto-based Web Designer with 15+ years of expertise in crafting over 500+ websites across diverse industries.">
+    <link rel="stylesheet" href="home-v2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="v2-cursor" id="v2Cursor"></div>
+
+    <!-- ─── Navigation ─── -->
+    <nav class="v2-nav" id="v2Nav">
+        <a href="#" class="v2-brand">KS</a>
+        <ul class="v2-nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="img/CV-Karanjeet-Singh.pdf" target="_blank" rel="noopener">Resume</a></li>
+        </ul>
+        <button class="v2-theme-btn" id="v2ThemeBtn" aria-label="Toggle theme">◐</button>
+    </nav>
+
+    <!-- ─── Hero ─── -->
+    <section class="v2-hero" id="home">
+        <!-- Background Orbs -->
+        <div class="v2-orb v2-orb-1" aria-hidden="true"></div>
+        <div class="v2-orb v2-orb-2" aria-hidden="true"></div>
+        <div class="v2-orb v2-orb-3" aria-hidden="true"></div>
+
+        <div class="v2-hero-inner">
+            <!-- Status Tag -->
+            <div class="v2-status-tag">
+                <div class="v2-status-dot"></div>
+                Available for new opportunities · Toronto, Canada
+            </div>
+
+            <!-- Title -->
+            <h1 class="v2-hero-title" id="heroTitle">
+                <span class="line"><span class="line-inner">Karanjeet Singh,</span></span>
+                <span class="line"><span class="line-inner v2-dimmed">Web Designer.</span></span>
+            </h1>
+
+            <!-- Description + CTAs -->
+            <div class="v2-hero-bottom">
+                <p class="v2-hero-desc">
+                    I bring <strong class="highlight">clarity to design</strong> helping companies create better products, build scalable systems, and align teams around a shared definition of quality.
+                </p>
+                <div class="v2-hero-links">
+                    <a href="#work" class="v2-cta-primary">View Work ↓</a>
+                    <a href="https://www.linkedin.com/in/karan-sabharwal/" class="v2-cta-ai" target="_blank" rel="noopener">
+                        <svg class="v2-ai-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                            <path d="M14.217,19.707l-1.112,2.547c-0.427,0.979-1.782,0.979-2.21,0l-1.112-2.547c-0.99-2.267-2.771-4.071-4.993-5.057L1.73,13.292c-0.973-0.432-0.973-1.848,0-2.28l2.965-1.316C6.974,8.684,8.787,6.813,9.76,4.47l1.126-2.714c0.418-1.007,1.81-1.007,2.228,0L14.24,4.47c0.973,2.344,2.786,4.215,5.065,5.226l2.965,1.316c0.973,0.432,0.973,1.848,0,2.28l-3.061,1.359C16.988,15.637,15.206,17.441,14.217,19.707z"/>
+                            <path d="M24.481,27.796l-0.339,0.777c-0.248,0.569-1.036,0.569-1.284,0l-0.339-0.777c-0.604-1.385-1.693-2.488-3.051-3.092l-1.044-0.464c-0.565-0.251-0.565-1.072,0-1.323l0.986-0.438c1.393-0.619,2.501-1.763,3.095-3.195l0.348-0.84c0.243-0.585,1.052-0.585,1.294,0l0.348,0.84c0.594,1.432,1.702,2.576,3.095,3.195l0.986,0.438c0.565,0.251,0.565,1.072,0,1.323l-1.044,0.464C26.174,25.308,25.085,26.411,24.481,27.796z"/>
+                        </svg>
+                        Linkedin
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photo Tooltip (follows cursor on title hover) -->
+        <div class="v2-photo-tooltip" id="photoTooltip">
+            <!-- Revolving text ring -->
+            <svg class="v2-revolve-text" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <path id="circlePath" d="M130,130 m-110,0 a110,110 0 1,1 220,0 a110,110 0 1,1 -220,0" fill="none"/>
+                </defs>
+                <text>
+                    <textPath href="#circlePath" startOffset="0%">DESIGNER · INNOVATOR · BUILDER · COLLABORATOR · STRATEGIST · OPTIMIZER · </textPath>
+                </text>
+            </svg>
+            <div class="v2-photo-tooltip-inner">
+                <img src="img/my-pic.webp" alt="Karanjeet Singh">
+                <!-- Film grain overlay -->
+                <div class="v2-film-grain"></div>
+                <!-- Scanline overlay -->
+                <div class="v2-scanlines"></div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="v2-scroll-wrapper">
+            <a href="#work" class="v2-scroll-indicator" aria-label="Scroll to work">
+                <span class="v2-scroll-text">Scroll</span>
+                <div class="v2-scroll-icon">
+                    <div class="v2-scroll-dot"></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ─── Work ─── -->
+    <section class="v2-work" id="work">
+        <div class="v2-work-header">
+            <span class="v2-section-label">Selected Work</span>
+            <span class="v2-work-count">04 Projects</span>
+        </div>
+
+        <!-- Case 02 -->
+        <article class="v2-work-item" id="proj-02">
+            <div class="v2-work-info">
+                <div class="v2-work-num">01 — Mobile · B2C · Interface</div>
+                <h2 class="v2-work-title">Autoscout 24 Mobile App User Interface</h2>
+                <p class="v2-work-desc">Redesign the mobile experience to build trust, simplify interactions, and streamline the end-to-end car trading journey.</p>
+                <div class="v2-work-tags">
+                    <span class="v2-tag">Research</span>
+                    <span class="v2-tag">UI/UX Design</span>
+                    <span class="v2-tag">Prototyping</span>
+                    <span class="v2-tag">Design System</span>
+                </div>
+                <a href="case02.html" class="v2-work-cta">
+                    View Case Study
+                    <span class="cta-arrow">↗</span>
+                </a>
+            </div>
+            <div class="v2-work-visual">
+                <img src="img/case02.png" alt="Merchant Growth Case Study" loading="lazy">
+            </div>
+        </article>
+
+         <!-- Case 03 -->
+        <article class="v2-work-item" id="proj-03">
+            <div class="v2-work-info">
+                <div class="v2-work-num">02 — Web Design · Growth · B2C</div>
+                <h2 class="v2-work-title">RV Dealer Website Redesign</h2>
+                <p class="v2-work-desc">Revamped an outdated dealership website into a modern, intuitive experience with clear navigation and smart filtering, improving discoverability and increasing lead generation.</p>
+                <div class="v2-work-tags">
+                    <span class="v2-tag">Research</span>
+                    <span class="v2-tag">UI/UX Design</span>
+                    <span class="v2-tag">Prototyping</span>
+                    <span class="v2-tag">Conversion</span>
+                </div>
+                <a href="case03.html" class="v2-work-cta">
+                    View Case Study
+                    <span class="cta-arrow">↗</span>
+                </a>
+            </div>
+            <div class="v2-work-visual">
+                <img src="img/rv-website-mockup-home.jpg" alt="RFQ Funnel Case Study" loading="lazy">
+            </div>
+        </article>
+
+        <!-- Case 01 -->
+        <article class="v2-work-item" id="proj-01">
+            <div class="v2-work-info">
+                <div class="v2-work-num">03 — Mobile · B2C · Growth</div>
+                <h2 class="v2-work-title">Questrade Mobile App</h2>
+                <p class="v2-work-desc">Simplified complex financial data into clear, actionable insights helping users move from analysis to action faster and with more confidence.</p>
+                <div class="v2-work-tags">
+                    <span class="v2-tag">Research</span>
+                    <span class="v2-tag">UI/UX Design</span>
+                    <span class="v2-tag">Prototyping</span>
+                    <span class="v2-tag">Design System</span>
+                </div>
+                <a href="case01.html" class="v2-work-cta">
+                    View Case Study
+                    <span class="cta-arrow">↗</span>
+                </a>
+            </div>
+            <div class="v2-work-visual">
+                <a href="case01.html"><img src="img/case01.png" alt="Mobile Marketplace Case Study" loading="lazy"></a>
+            </div>
+        </article>
+
+        
+
+       
+
+        <!-- Case 04 -->
+        <article class="v2-work-item" id="proj-04">
+            <div class="v2-work-info">
+                <div class="v2-work-num">04 — Web · B2B · Marketing Tool</div>
+                <h2 class="v2-work-title">Automotive Banner Builder Tool</h2>
+                <p class="v2-work-desc">Design a self-serve platform that enables car dealers to create and customize promotional banners, streamlining workflows and reducing manual effort.</p>
+                <div class="v2-work-tags">
+                    <span class="v2-tag">Product Thinking</span>
+                    <span class="v2-tag">Prototyping</span>
+                    <span class="v2-tag">Problem Solving</span>
+                </div>
+                <a href="case04.html" class="v2-work-cta">
+                    View Case Study
+                    <span class="cta-arrow">↗</span>
+                </a>
+            </div>
+            <div class="v2-work-visual">
+                <img src="img/banner-project-thumb.jpg" alt="MindWay Mental Health App" loading="lazy">
+            </div>
+        </article>
+    </section>
+
+    <!-- ─── About ─── -->
+    <section id="about" class="v2-about">
+        <div class="v2-about-grid">
+            <!-- Col 1: Bio -->
+            <div>
+                <p class="v2-about-label">About</p>
+                <p class="v2-about-bio">
+                    <strong>Senior UI/UX Designer</strong> based in Toronto with 10+ years of experience designing responsive web and SaaS products. Skilled in user research, interaction design, and design systems, with a track record of improving usability, SEO performance, and conversion.
+                </p>
+            </div>
+            <!-- Col 2: Skills -->
+            <div>
+                <p class="v2-about-label">Expertise</p>
+                <ul class="v2-skills-list">
+                    <li>UX / UI Design</li>
+                    <li>Design Systems</li>
+                    <li>User Research & Discovery</li>
+                    <li>Prototyping & Interaction Design</li>
+                    <li>AI-Enabled Design Workflows</li>
+                    <li>Growth & Conversion Optimisation</li>
+                </ul>
+            </div>
+            <!-- Col 3: Contact -->
+            <div>
+                <p class="v2-about-label">Get in Touch</p>
+                <div class="v2-contact-links">
+                    <a href="mailto:karanjeetsin@gmail.com" class="v2-contact-link">Email ↗</a>
+                    <a href="img/CV-Karanjeet-Singh.pdf" target="_blank" rel="noopener" class="v2-contact-link">Resume / CV
+                        ↗</a>
+                    <a href="https://www.linkedin.com/in/karan-sabharwal/" target="_blank" rel="noopener"
+                        class="v2-contact-link">LinkedIn ↗</a>
+                    <a href="https://www.behance.net/karansabharwal9" target="_blank" rel="noopener"
+                        class="v2-contact-link">Behance ↗</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ─── -->
+    <footer class="v2-footer">
+        <span class="v2-footer-copy">© 2026 Karanjeet Singh. All rights reserved.</span>
+        <span class="v2-footer-copy">Toronto, Canada · Web & UI/UX Designer</span>
+    </footer>
+
+    <script>
+        // ── Theme Toggle ──
+        const html = document.documentElement;
+        const themeBtn = document.getElementById('v2ThemeBtn');
+
+        const savedTheme = localStorage.getItem('v2-theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        themeBtn.textContent = savedTheme === 'dark' ? '◐' : '◑';
+
+        themeBtn.addEventListener('click', () => {
+            const curr = html.getAttribute('data-theme');
+            const next = curr === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('v2-theme', next);
+            themeBtn.textContent = next === 'dark' ? '◐' : '◑';
+        });
+
+        // ── Scroll Nav ──
+        const nav = document.getElementById('v2Nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // ── Custom Cursor ──
+        const cursor = document.getElementById('v2Cursor');
+        const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+
+        if (!isCoarse) {
+            document.addEventListener('mousemove', e => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            const hoverTargets = document.querySelectorAll('a, button, .v2-work-item');
+            hoverTargets.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
+            });
+        } else {
+            cursor.style.display = 'none';
+        }
+
+        // ── Photo Tooltip on Title Hover ──
+        const heroTitle = document.getElementById('heroTitle');
+        const photoTooltip = document.getElementById('photoTooltip');
+
+        if (heroTitle && photoTooltip && !isCoarse) {
+            let tooltipX = 0, tooltipY = 0;
+            let currentX = 0, currentY = 0;
+            let tooltipRAF = null;
+
+            // Smooth lerp follow
+            function updateTooltipPos() {
+                currentX += (tooltipX - currentX) * 0.15;
+                currentY += (tooltipY - currentY) * 0.15;
+                photoTooltip.style.left = currentX + 'px';
+                photoTooltip.style.top = currentY + 'px';
+                tooltipRAF = requestAnimationFrame(updateTooltipPos);
+            }
+
+            heroTitle.addEventListener('mouseenter', () => {
+                photoTooltip.classList.add('is-visible');
+                tooltipRAF = requestAnimationFrame(updateTooltipPos);
+            });
+
+            heroTitle.addEventListener('mouseleave', () => {
+                photoTooltip.classList.remove('is-visible');
+                if (tooltipRAF) cancelAnimationFrame(tooltipRAF);
+            });
+
+            heroTitle.addEventListener('mousemove', e => {
+                tooltipX = e.clientX;
+                tooltipY = e.clientY;
+            });
+        }
+
+        // ── Magnetic CTA ──
+        const magneticEls = document.querySelectorAll('.v2-cta-primary, .v2-cta-ai, .v2-work-cta');
+
+        if (!isCoarse) {
+            magneticEls.forEach(el => {
+                el.addEventListener('mousemove', e => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+                });
+                el.addEventListener('mouseleave', () => {
+                    el.style.transform = '';
+                });
+            });
+        }
+
+        // ── Scroll Reveal ──
+        const workItems = document.querySelectorAll('.v2-work-item');
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                    }, 100);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        workItems.forEach(el => revealObserver.observe(el));
+
+        // ── Smooth Eased Scroll ──
+        function smoothScrollTo(target, duration = 900) {
+            const startY = window.scrollY;
+            const targetY = target.getBoundingClientRect().top + window.scrollY - 80; // 80px nav offset
+            const distance = targetY - startY;
+            let startTime = null;
+
+            const easeInOutCubic = t =>
+                t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+                if (progress < 1) requestAnimationFrame(step);
+            }
+
+            requestAnimationFrame(step);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', e => {
+                const id = link.getAttribute('href');
+                if (id === '#') return;
+                const target = document.querySelector(id);
+                if (!target) return;
+                e.preventDefault();
+                smoothScrollTo(target);
+            });
+        });
+    </script>
+</body>
+
+</html>
